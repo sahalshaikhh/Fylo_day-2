@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/dist/output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Fylo data storage component</title>
+  </head>
+  <body>
+    <!-- This is for Mobile/Tab View -->
+
+    <!-- Start of Mobile/tab View -->
+
+    <div class="container flex flex-col gap-4 md:hidden">
+      <div class="Top-Section">
+        <div class="logo mt-4">
+          <img src="./images/logo.svg" alt="Icon" />
+        </div>
+        <div class="file-icons flex gap-4">
+          <div class="icons icon-one">
+            <img src="./images/icon-document.svg" alt="Document" />
+          </div>
+          <div class="icons icon-two">
+            <img src="./images/icon-folder.svg" alt="folder" />
+          </div>
+          <div class="icons icon-three flex justify-center items-center">
+            <img src="./images/icon-upload.svg" alt="icon-upload" />
+          </div>
+        </div>
+      </div>
+      <div class="Bottom-Section pt-8 pb-16 relative">
+        <p class="text-white font-thin">
+          You've used <span class="font-bold"> 815gb </span> of storage
+        </p>
+        <div class="input-range mt-2">
+          <input type="range" value="70" min="40" max="100" />
+        </div>
+        <div class="gb-data text-white text-sm flex justify-between w-[90%]">
+          <div>0 GB</div>
+          <div>1000 GB</div>
+        </div>
+        <div
+          class="last-box bg-white text-gray-600 p-4 rounded-xl absolute bottom-[-2rem]"
+        >
+          <span class="text-black font-bold text-4xl">
+            1<span class=" ">8</span>5</span
+          >
+          GB LEFT
+        </div>
+      </div>
+    </div>
+    <!-- End of Mobile/Tab View -->
+
+    <!-- This is for Big Screens e.g Laptop -->
+
+    <!-- Start of Big Screen View -->
+
+    <div class="Container-bs hidden md:block relative">
+      <img
+        src="./images/bg-desktop.png"
+        alt="background-Image"
+        class="w-full absolute bottom-0 h-[50%]"
+      />
+      <div class="main-two-components">
+        <div class="Top-Section-bs">
+          <div class="logo mt-4">
+            <img src="./images/logo.svg" alt="Icon" />
+          </div>
+          <div class="file-icons flex gap-4">
+            <div class="icons icon-one">
+              <img src="./images/icon-document.svg" alt="Document" />
+            </div>
+            <div class="icons icon-two">
+              <img src="./images/icon-folder.svg" alt="folder" />
+            </div>
+            <div class="icons icon-three flex justify-center items-center">
+              <img src="./images/icon-upload.svg" alt="icon-upload" />
+            </div>
+          </div>
+        </div>
+        <div class="Bottom-Section-bs py-8 absolute">
+          <p class="text-white font-thin w-[90%] text-start">
+            You've used <span class="font-bold"> 815gb </span> of storage
+          </p>
+          <div class="input-range mt-2">
+            <input type="range" value="70" min="40" max="100" />
+          </div>
+          <div class="gb-data text-white text-sm flex justify-between w-[90%]">
+            <div>0 GB</div>
+            <div>1000 GB</div>
+          </div>
+          <div
+            class="last-box-bs bg-white text-gray-600 p-4 absolute top-[-3.5rem] right-7"
+          >
+            <span class="text-black font-bold text-4xl">
+              1<span class=" ">8</span>5</span
+            >
+            GB LEFT
+            <div
+              class="img absolute top-[3.2rem] right-[-12px] rotate-[510deg]"
+            >
+              <img src="./images/triangle-fill.svg" alt="" class="h-12" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of Big Screen Veiw -->
+  </body>
+
+  <!-- JavaScript for Range Input  Stylinng  -->
+  <script>
+    const rangeInputs = document.querySelectorAll('input[type="range"]');
+    const numberInput = document.querySelector('input[type="number"]');
+
+    function handleInputChange(e) {
+      let target = e.target;
+      if (e.target.type !== "range") {
+        target = document.getElementById("range");
+      }
+      const min = target.min;
+      const max = target.max;
+      const val = target.value;
+
+      target.style.backgroundSize =
+        ((val - min) * 100) / (max - min) + "% 100%";
+    }
+
+    rangeInputs.forEach((input) => {
+      input.addEventListener("input", handleInputChange);
+    });
+
+    numberInput.addEventListener("input", handleInputChange);
+  </script>
+</html>
